@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "npx prettier . --write",
     "prepare": "husky",
-    "update-service-worker-cache": "node scripts/update-service-worker-cache.js"
+    "update-service-worker-cache": "node src/update-service-worker-cache.js",
+    "start": "node src/web-push-server.js"
   },
   "repository": {
     "type": "git",
