@@ -1,0 +1,31 @@
+{
+  "name": "web-push",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "npx prettier . --write",
+    "prepare": "husky",
+    "update-service-worker-cache": "node scripts/update-service-worker-cache.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@e.coding.net:g-galc4562/reward-store/shop-uniapp.git"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "private": true,
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
+    "prettier": "3.4.2"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "web-push": "^3.6.7"
+  }
+}

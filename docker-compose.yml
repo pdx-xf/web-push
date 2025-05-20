@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  web-push-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: web-push-server
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - VAPID_SUBJECT=mailto:example@yourdomain.com
+    volumes:
+      - ./src/subscriptions.json:/app/subscriptions.json
+      - ./src/vapid-keys.json:/app/vapid-keys.json
+    networks:
+      - web-push-network
+
+networks:
+  web-push-network:
+    driver: bridge
