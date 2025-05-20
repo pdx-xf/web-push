@@ -43,7 +43,7 @@ if (fs.existsSync(VAPID_FILE)) {
 webpush.setVapidDetails(
   VAPID_SUBJECT,
   vapidKeys.publicKey,
-  vapidKeys.privateKey,
+  vapidKeys.privateKey
 );
 
 // 加载订阅信息
@@ -80,7 +80,7 @@ app.post("/api/subscribe", (req, res) => {
 
   // 检查是否已存在相同的订阅
   const existingIndex = subscriptions.findIndex(
-    (s) => s.subscription.endpoint === subscription.endpoint,
+    (s) => s.subscription.endpoint === subscription.endpoint
   );
 
   if (existingIndex !== -1) {
@@ -123,7 +123,7 @@ app.post("/api/unsubscribe", (req, res) => {
     // 通过endpoint删除
     const initialLength = subscriptions.length;
     subscriptions = subscriptions.filter(
-      (s) => s.subscription.endpoint !== endpoint,
+      (s) => s.subscription.endpoint !== endpoint
     );
     removed = subscriptions.length < initialLength;
   } else if (userId) {
@@ -212,8 +212,8 @@ app.post("/api/send-notification", async (req, res) => {
     subscriptions = subscriptions.filter(
       (s) =>
         !failedSubscriptions.some(
-          (f) => f.subscription.endpoint === s.subscription.endpoint,
-        ),
+          (f) => f.subscription.endpoint === s.subscription.endpoint
+        )
     );
     saveSubscriptions();
     console.log(`已移除 ${failedSubscriptions.length} 个失效的订阅`);
@@ -237,8 +237,8 @@ app.get("/api/subscriptions/stats", (req, res) => {
       subscriptions.length > 0
         ? new Date(
             Math.max(
-              ...subscriptions.map((s) => new Date(s.lastUpdated).getTime()),
-            ),
+              ...subscriptions.map((s) => new Date(s.lastUpdated).getTime())
+            )
           ).toISOString()
         : null,
   });
