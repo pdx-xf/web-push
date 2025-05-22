@@ -191,7 +191,13 @@ app.post("/api/send-notification", async (req, res) => {
       });
       console.log(`推送成功: ${sub.id}, 状态码: ${result.statusCode}`);
     } catch (error) {
-      console.error(`推送失败: ${sub.id}`, error);
+      console.error(
+        `推送失败: ${sub.id}`,
+        error,
+        sub.id,
+        error.statusCode,
+        error.message
+      );
 
       // 检查是否是订阅过期或无效
       if (error.statusCode === 404 || error.statusCode === 410) {
